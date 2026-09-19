@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Maderas de Castelli · Carpintería a tu medida">
+<meta property="og:description" content="Tablas con tu nombre grabado, con precio al instante. Muebles a medida por WhatsApp.">
+<meta property="og:image" content="img/mdc-set.jpg">
+<link rel="icon" href="img/logo.jpg">
+<title>Maderas de Castelli</title>
+<meta name="description" content="Carpintería a medida: armá tu mueble, conocé el precio al instante y confirmá tu pedido.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F2E8DA; --surface:#FBF6EE; --sunk:#E9DCC8;
+  --ink:#2A1D13; --muted:#6E5A48; --line:#DCCAB2;
+  --accent:#7A4524; --accent-hover:#633619; --accent-ink:#FBF6EE; --accent-soft:#EFDCC6;
+  --deep:#3B2819; --deep-ink:#F4E6D2;
+  --wood-top:#E2B988; --wood-front:#C48A55; --wood-side:#9A6536; --wood-edge:#5E3B1F;
+  --ok:#3F6B3A; --err:#A33A2A;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.25 0 0 0 0 0.12 0 0 0 0.22 -0.099'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+  --grain-deep:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.0 0 0 0 0 0.0 0 0 0 0 0.0 0 0 0 0.35 -0.158'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+  --f-display:"Young Serif", Georgia, "Times New Roman", serif;
+  --f-body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --r:8px; --max:1160px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+  --bg:#18110C; --surface:#211811; --sunk:#2A1F16;
+  --ink:#F1E4D2; --muted:#B8A48E; --line:#3A2B1F;
+  --accent:#E0A96D; --accent-hover:#EDBC85; --accent-ink:#22160D; --accent-soft:#3A2A1C;
+  --deep:#2C1D12; --deep-ink:#F4E6D2;
+  --wood-top:#C99D70; --wood-front:#A8763F; --wood-side:#80552D; --wood-edge:#E3C39F;
+  --ok:#9BC48F; --err:#E58B78;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.8 0 0 0 0 0.6 0 0 0 0.1 -0.045'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#18110C; --surface:#211811; --sunk:#2A1F16;
+  --ink:#F1E4D2; --muted:#B8A48E; --line:#3A2B1F;
+  --accent:#E0A96D; --accent-hover:#EDBC85; --accent-ink:#22160D; --accent-soft:#3A2A1C;
+  --deep:#2C1D12; --deep-ink:#F4E6D2;
+  --wood-top:#C99D70; --wood-front:#A8763F; --wood-side:#80552D; --wood-edge:#E3C39F;
+  --ok:#9BC48F; --err:#E58B78;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.8 0 0 0 0 0.6 0 0 0 0.1 -0.045'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* cinta métrica: marcas cada 1 cm, larga cada 5 */
+.ruler{height:14px;background:
+  repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 50px) bottom/100% 14px no-repeat,
+  repeating-linear-gradient(90deg,var(--muted) 0 1px,transparent 1px 10px) bottom/100% 6px no-repeat;
+  opacity:.55}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font:600 15px/1 var(--f-body);padding:15px 22px;border-radius:var(--r);border:1px solid transparent;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:400 18px/1 var(--f-display)}
+.brand img{width:36px;height:36px;border-radius:50%;border:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:26px;font-size:14px;color:var(--muted)}
+.nav a{text-decoration:none}
+.nav a:hover{color:var(--ink)}
+.nav .btn{padding:10px 14px;font-size:14px}
+@media (max-width:760px){.nav .hide-sm{display:none}}
+
+/* hero */
+.hero{background:var(--grain),var(--bg);padding-block:clamp(40px,7vw,88px) clamp(40px,6vw,72px)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,68px);margin-block:18px 22px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:52ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.hero .facts b{color:var(--ink);font-weight:600}
+.hero figure{margin:0;position:relative}
+.hero figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);box-shadow:0 18px 40px -18px rgba(59,40,25,.45)}
+.hero figcaption{position:absolute;left:14px;bottom:14px;background:var(--surface);color:var(--ink);font:500 12px/1.3 var(--f-mono);padding:8px 10px;border-radius:4px}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero figure img{aspect-ratio:4/3}}
+
+/* secciones */
+section{scroll-margin-top:72px}
+.sec{padding-block:clamp(56px,8vw,104px)}
+.sec-head{display:grid;gap:14px;max-width:62ch;margin-bottom:clamp(28px,4vw,48px)}
+.sec-head h2{font-size:clamp(28px,3.4vw,42px)}
+.sec-head p{color:var(--muted);font-size:17px}
+.band{background:var(--grain),var(--sunk);border-block:1px solid var(--line)}
+
+/* problema */
+.problem{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.problem div{background:var(--surface);padding:26px 24px;display:grid;gap:8px;align-content:start}
+.problem h3{font-size:19px}
+.problem p{color:var(--muted);font-size:15px}
+@media (max-width:760px){.problem{grid-template-columns:1fr}}
+
+/* pasos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);counter-reset:s}
+.step{display:grid;gap:10px;align-content:start;padding-top:18px;border-top:2px solid var(--accent)}
+.step::before{counter-increment:s;content:"Paso " counter(s);font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.step img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);margin-bottom:6px}
+.step h3{font-size:21px}
+.step p{color:var(--muted);font-size:15px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* cotizador */
+.builder{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:start}
+@media (max-width:940px){.builder{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.cfg{padding:clamp(18px,3vw,30px);display:grid;gap:26px}
+.field{display:grid;gap:10px;border:0;margin:0;padding:0;min-width:0}
+.field>legend,.field>label.lbl{font:600 14px/1.2 var(--f-body);padding:0;margin-bottom:10px}
+.field>label.lbl{margin-bottom:0}
+.hint{font-size:13px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:block;padding:9px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;background:var(--surface);transition:all .15s;white-space:nowrap}
+.chip input:hover+span{border-color:var(--ink)}
+.chip input:checked+span{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.chip input:disabled+span{opacity:.4;text-decoration:line-through}
+.chip small{opacity:.7;font-family:var(--f-mono);font-size:12px;margin-left:6px}
+.woods{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:520px){.woods{grid-template-columns:repeat(2,1fr)}}
+.wood{position:relative}
+.wood input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.wood div{border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:4px;height:100%;transition:border-color .15s}
+.wood i{display:block;height:8px;border-radius:2px;margin-bottom:6px}
+.wood b{font-size:14px;font-weight:600}
+.wood small{font-size:12px;color:var(--muted);line-height:1.35}
+.wood input:hover+div{border-color:var(--muted)}
+.wood input:checked+div{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+.wood input:focus-visible+div{outline:2px solid var(--accent);outline-offset:2px}
+.dims{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.dims.sizes{gap:8px}
+.dims.sizes .mono{font-size:12.5px}
+@media (max-width:520px){.dims.sizes{grid-template-columns:repeat(2,1fr)!important}}
+@media (max-width:520px){.dims{grid-template-columns:1fr}}
+.dim{display:grid;gap:6px}
+.dim label{font-size:13px;color:var(--muted)}
+.num{display:flex;align-items:center;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);overflow:hidden}
+.num input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:500 16px var(--f-mono);padding:11px 12px;font-variant-numeric:tabular-nums}
+.num input:focus{outline:none}
+.num:focus-within{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.num span{font:13px var(--f-mono);color:var(--muted);padding-right:12px}
+.num.fixed{background:var(--sunk)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.checks{display:grid;gap:8px}
+.check{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--accent);margin:0}
+.check .mono{margin-left:auto;font-size:13px;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:var(--r);width:max-content;overflow:hidden;background:var(--bg)}
+.qty button{width:42px;height:44px;border:0;background:transparent;color:var(--ink);font:500 20px var(--f-mono);cursor:pointer}
+.qty button:hover{background:var(--sunk)}
+.qty input{width:64px;text-align:center;border:0;border-inline:1px solid var(--line);height:44px;background:transparent;color:var(--ink);font:500 16px var(--f-mono)}
+textarea,.inp{width:100%;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);padding:11px 12px}
+textarea{resize:vertical;min-height:72px}
+textarea:focus,.inp:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+
+/* catálogo */
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px}
+.prod{position:relative}
+.prod input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.prod div{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;height:100%;display:grid;grid-template-rows:auto 1fr;background:var(--surface);transition:border-color .15s}
+.prod img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#F4EFEA;padding:6px}
+.prod span{padding:8px 10px 10px;display:grid;gap:2px}
+.prod b{font-size:13.5px;font-weight:600;line-height:1.25}
+.prod small{font:12px var(--f-mono);color:var(--muted)}
+.prod input:hover+div{border-color:var(--muted)}
+.prod input:checked+div{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.prod input:focus-visible+div{outline:2px solid var(--accent);outline-offset:2px}
+.preview{margin:0;overflow:hidden}
+.preview img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#F4EFEA;padding:10px}
+.preview figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 16px 14px;flex-wrap:wrap}
+
+/* plano + resumen */
+.side{display:grid;gap:16px;position:sticky;top:84px}
+@media (max-width:940px){.side{position:static}}
+.plan{padding:18px 18px 12px}
+.plan-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.plan svg{width:100%;height:auto;display:block}
+.plan svg text{font-family:var(--f-mono);font-size:12px;fill:var(--muted)}
+.plan .dl{stroke:var(--muted);stroke-width:1}
+.quote{padding:20px 20px 22px;display:grid;gap:14px}
+.quote .price{font:400 clamp(30px,3.4vw,38px)/1 var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.quote .sub{font-size:13px;color:var(--muted)}
+.lines{display:grid;gap:6px;font-size:14px;padding-block:12px;border-block:1px dashed var(--line)}
+.lines div{display:flex;justify-content:space-between;gap:12px}
+.lines dd,.lines dt{margin:0}
+.lines dd{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lines .disc dd{color:var(--ok)}
+.eta{display:flex;align-items:center;gap:8px;font-size:14px}
+.eta svg{width:16px;height:16px;flex:none;color:var(--muted)}
+
+/* presupuesto (items) */
+.cart{padding:20px;display:grid;gap:14px}
+.cart-empty{font-size:14px;color:var(--muted)}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.items li{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:start;padding-block:12px;border-bottom:1px solid var(--line)}
+.items li:first-child{padding-top:0}
+.items b{font-size:14px;font-weight:600;display:block}
+.items small{font-size:12.5px;color:var(--muted);line-height:1.4;display:block}
+.items .mono{font-size:14px;white-space:nowrap}
+.x{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:2px 4px}
+.x:hover{color:var(--err)}
+.total{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+.total .mono{font-size:20px}
+.stack{display:grid;gap:8px}
+
+/* muebles */
+.furn{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:stretch}
+.furn-img{margin:0;position:relative}
+.furn-img img{width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:var(--r)}
+.furn-img figcaption{position:absolute;left:14px;bottom:14px;background:var(--surface);color:var(--ink);font:500 12px/1.3 var(--f-mono);padding:8px 10px;border-radius:4px}
+@media (max-width:940px){.furn{grid-template-columns:1fr}.furn-img img{aspect-ratio:4/3;height:auto}}
+
+/* galería */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:var(--r);background:var(--sunk)}
+.gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;transition:transform .5s}
+.gallery figure:hover img{transform:scale(1.03)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 10px;color:#fff;font-size:13px;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.gallery .wide{grid-column:span 2}
+.gallery .wide img{aspect-ratio:3/2}
+@media (max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+/* beneficios */
+.ben-wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(24px,5vw,64px);align-items:center}
+.ben-img{margin:0;position:relative}
+.ben-img img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.ben-img figcaption{position:absolute;left:14px;bottom:14px;background:var(--surface);color:var(--ink);font:500 12px/1.3 var(--f-mono);padding:8px 10px;border-radius:4px}
+@media (max-width:860px){.ben-wrap{grid-template-columns:1fr}.ben-img img{aspect-ratio:4/3}}
+.benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,4vw,56px) clamp(24px,5vw,72px)}
+.benefit{display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+.benefit .k{grid-row:span 2;font:500 12px/1.6 var(--f-mono);color:var(--muted);padding-top:3px;min-width:92px}
+.benefit h3{font-size:20px}
+.benefit p{color:var(--muted);font-size:15px}
+@media (max-width:760px){.benefits{grid-template-columns:1fr}.benefit{grid-template-columns:1fr}.benefit .k{grid-row:auto}}
+
+/* faq */
+.faq{display:grid;max-width:820px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding-block:20px;font:600 17px/1.35 var(--f-body)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 22px/1 var(--f-mono);color:var(--muted);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding-bottom:20px;color:var(--muted);max-width:68ch}
+
+/* cierre */
+.close{background:var(--grain-deep),var(--deep);color:var(--deep-ink)}
+.close .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:end}
+.close h2{font-size:clamp(30px,4vw,50px)}
+.close p{opacity:.85;margin-top:16px;max-width:52ch;font-size:17px}
+.close .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+.close .btn-primary{background:var(--deep-ink);color:var(--deep)}
+.close .btn-primary:hover{opacity:.9;background:var(--deep-ink)}
+.close .btn-ghost{color:var(--deep-ink);border-color:color-mix(in srgb,var(--deep-ink) 40%,transparent)}
+.close .btn-ghost:hover{border-color:var(--deep-ink)}
+@media (max-width:760px){.close .wrap{grid-template-columns:1fr}.close .ctas{justify-content:flex-start}}
+
+footer{padding-block:36px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+.linkbtn{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:0}
+.linkbtn:hover{color:var(--ink)}
+
+/* whatsapp flotante */
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.wa-float svg{width:28px;height:28px}
+
+/* diálogo */
+dialog{border:1px solid var(--line);border-radius:10px;padding:0;background:var(--surface);color:var(--ink);width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px)}
+dialog::backdrop{background:rgba(10,12,10,.5)}
+.dlg{padding:clamp(20px,4vw,32px);display:grid;gap:18px}
+.dlg h3{font-size:26px}
+.dlg .row2{gap:14px}
+.dlg label{display:grid;gap:6px;font-size:13px;color:var(--muted)}
+.dlg .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.dlg .err{color:var(--err);font-size:14px}
+.ok-mark{width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.ok-mark svg{width:24px;height:24px}
+.code{font:600 22px var(--f-mono);letter-spacing:.04em}
+
+/* pedidos (taller) */
+.orders{display:grid;gap:12px}
+.order{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:10px}
+.order-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:baseline}
+.order ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted)}
+.pill{font:500 12px/1 var(--f-mono);padding:5px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.order select{font:14px var(--f-body);padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
+</style>
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><img src="img/logo.jpg" alt="" width="36" height="36">Maderas de Castelli</a>
+    <nav class="nav" aria-label="Principal">
+      <a class="hide-sm" href="#como">Cómo funciona</a>
+      <a class="hide-sm" href="#trabajos">Trabajos</a>
+      <a class="hide-sm" href="#preguntas">Preguntas</a>
+      <a class="hide-sm" href="#muebles">Muebles</a>
+      <a class="btn btn-primary" href="#cotizador">Armar mi tabla</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- 1 · SOBRE EL PLIEGUE -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Carpintería a tu medida · Villa Devoto, CABA</span>
+        <h1>¿Cómo tener tus tablas <em>con tu nombre</em> sin esperar días por un presupuesto?</h1>
+        <p class="lead">Elegí la tabla, la medida y el grabado, y ves el precio al instante: una tabla sale en el día, 50 en unos 3 días. ¿Buscás un mueble a medida? Contanos tu idea por WhatsApp y te lo cotizamos.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#cotizador">Armar mi tabla
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#muebles">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+            Cotizar un mueble</a>
+        </div>
+        <div class="facts">
+          <span><b>5 años</b> de oficio</span>
+          <span><b>1 a 50</b> unidades por pedido</span>
+          <span><b>Grabado láser</b> desde $10.000</span>
+        </div>
+      </div>
+      <figure>
+        <img src="img/mdc-hero.jpg" alt="Carpintero con máscara lijando una pieza de madera maciza en el taller" width="1019" height="1400">
+        <figcaption>Hecho a mano en Villa Devoto</figcaption>
+      </figure>
+    </div>
+    <div class="wrap" style="margin-top:clamp(36px,5vw,56px)"><div class="ruler" aria-hidden="true"></div></div>
+  </section>
+
+  <!-- 2 · DESARROLLO: costo del problema actual -->
+  <section class="sec band" aria-labelledby="h-problema">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Lo que pasa hoy</span>
+        <h2 id="h-problema">Comprar un mueble estándar sale barato una sola vez.</h2>
+        <p>Y después se paga todos los días: no entra en el espacio, se parece al de todos y no aguanta el uso.</p>
+      </div>
+      <div class="problem">
+        <div><h3>Medidas que no cierran</h3><p>El mueble de catálogo viene en tres tamaños. Tu pared, tu mesa o tu salón tienen uno solo: el tuyo.</p></div>
+        <div><h3>Igual al de enfrente</h3><p>La tabla del mayorista es la misma que usa el bar de al lado. Pagás por diferenciarte y terminás igualado.</p></div>
+        <div><h3>Dura una temporada</h3><p>Aglomerado y maderas blandas se abren, se manchan o se astillan a los pocos meses de uso real.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · DESARROLLO: cómo lo resolvemos -->
+  <section class="sec" id="como" aria-labelledby="h-como">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 id="h-como">De la idea al mueble terminado, sin idas y vueltas.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><img src="img/mdc-diseno.jpg" alt="Diseño de una pieza en la computadora del taller" loading="lazy"><h3>Armás tu pedido</h3><p>Elegís la tabla, la medida, el grabado y la cantidad. El precio se actualiza mientras la diseñás. Para muebles, nos contás tu idea por WhatsApp.</p></div>
+        <div class="step"><img src="img/mdc-cnc.jpg" alt="Fresadora CNC cortando una tabla" loading="lazy"><h3>Confirmás el pedido</h3><p>Dejás tus datos y queda registrado con un número. Te escribimos para validar medidas y, si hay grabado, te mandamos el diseño previo.</p></div>
+        <div class="step"><img src="img/mdc-manos.jpg" alt="Manos pasando el borde de una tabla por la fresadora" loading="lazy"><h3>Lo fabricamos y entregamos</h3><p>Con la seña del 50% arrancamos en el taller y sabés desde el día uno cuándo lo vas a tener. El resto se paga contra entrega.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COTIZADOR -->
+  <section class="sec band" id="cotizador" aria-labelledby="h-cot">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Catálogo y cotizador</span>
+        <h2 id="h-cot">Elegí tu tabla y mirá el precio al instante.</h2>
+        <p>Precios de lista del catálogo, con o sin grabado láser. Podés sumar varios productos al mismo pedido.</p>
+      </div>
+
+      <div class="builder">
+        <form class="panel cfg" id="cfg" autocomplete="off" onsubmit="return false">
+          <fieldset class="field">
+            <legend>Elegí el producto</legend>
+            <div class="prods" id="prods"></div>
+          </fieldset>
+
+          <fieldset class="field" id="variantField">
+            <legend>Medida o modelo</legend>
+            <div class="chips" id="variants"></div>
+          </fieldset>
+
+          <fieldset class="field" id="engraveField">
+            <legend>Grabado láser</legend>
+            <div class="chips" id="engrave"></div>
+            <p class="hint">Logo, nombre o frase. Te mandamos el diseño previo antes de grabar. ¿Más grande o en mucha cantidad? <a href="#" class="js-wa" data-msg="Hola! Quiero consultar por un grabado láser más grande / en cantidad.">Consultanos</a>.</p>
+          </fieldset>
+
+          <div class="row2">
+            <div class="field">
+              <label class="lbl" for="qty">Cantidad</label>
+              <div class="qty">
+                <button type="button" id="qtyMinus" aria-label="Restar uno">−</button>
+                <input id="qty" type="number" inputmode="numeric" min="1" max="500" value="1">
+                <button type="button" id="qtyPlus" aria-label="Sumar uno">+</button>
+              </div>
+              <p class="hint">Desde 25 unidades tenés precio mayorista.</p>
+            </div>
+            <div class="field">
+              <label class="lbl" for="note">Detalles <span class="hint">(opcional)</span></label>
+              <textarea id="note" placeholder="Ej.: logo del local en una esquina, qué texto grabar…"></textarea>
+            </div>
+          </div>
+          <p class="hint">Todas nuestras tablas son de eucalipto alistonado y listón corrido, estacionado y secado a horno.</p>
+        </form>
+
+        <aside class="side" aria-label="Tu presupuesto">
+          <figure class="panel preview">
+            <img id="pvImg" src="img/cat-vacio.jpg" alt="">
+            <figcaption><b id="pvName"></b><span class="mono hint" id="pvDims"></span></figcaption>
+          </figure>
+
+          <div class="panel quote" aria-live="polite">
+            <div>
+              <span class="eyebrow">Tu selección</span>
+              <div class="price" id="price">$ 0</div>
+              <p class="sub" id="unitPrice"></p>
+            </div>
+            <dl class="lines" id="lines"></dl>
+            <p class="hint" id="wholesale" hidden>Desde 25 unidades aplica la lista mayorista: el total de arriba es a precio minorista y te pasamos el precio final por WhatsApp.</p>
+            <div class="eta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span>Entrega: <b id="eta"></b></span>
+            </div>
+            <div class="eta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg>
+              <span id="ship"></span>
+            </div>
+            <div class="eta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>
+              <span>Seña 50%: <b id="deposit" class="mono"></b> · el resto contra entrega</span>
+            </div>
+            <button class="btn btn-primary" type="button" id="addBtn">Agregar al presupuesto</button>
+          </div>
+
+          <div class="panel cart" id="cart">
+            <div class="plan-head"><span class="eyebrow">Tu presupuesto</span><span class="hint mono" id="cartCount"></span></div>
+            <p class="cart-empty" id="cartEmpty">Todavía no agregaste productos. Elegí uno y tocá “Agregar al presupuesto”.</p>
+            <ul class="items" id="items"></ul>
+            <div class="total" id="totalRow" hidden><span>Total estimado</span><span class="mono" id="total"></span></div>
+            <div class="stack" id="cartActions" hidden>
+              <button class="btn btn-primary" type="button" id="confirmBtn">Confirmar pedido</button>
+              <a class="btn btn-ghost js-wa-quote" href="#">Consultarlo por WhatsApp</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUEBLES A MEDIDA → WhatsApp -->
+  <section class="sec" id="muebles" aria-labelledby="h-mue">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Muebles a medida</span>
+        <h2 id="h-mue">Cada mueble es distinto. Contanos tu idea y te lo cotizamos.</h2>
+        <p>Roperos, vanitorys, mesas, mesas de luz, estantes, respaldos. Completá lo que sepas y te llega el mensaje armado a nuestro WhatsApp: lo seguimos por ahí.</p>
+      </div>
+      <div class="furn">
+        <form class="panel cfg" id="furnForm" autocomplete="off">
+          <fieldset class="field">
+            <legend>¿Qué mueble necesitás?</legend>
+            <div class="chips" id="furnTypes"></div>
+          </fieldset>
+          <div class="field">
+            <label class="lbl" for="furnSize">Medidas aproximadas <span class="hint">(ancho × alto × profundidad)</span></label>
+            <input class="inp" id="furnSize" placeholder="Ej.: 100 × 130 × 45 cm, o “el hueco mide 1,20 m”">
+          </div>
+          <div class="field">
+            <label class="lbl" for="furnIdea">Contanos la idea</label>
+            <textarea id="furnIdea" placeholder="Para qué ambiente es, madera o color que te gusta, cajones, puertas, si hay que colocarlo…"></textarea>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label class="lbl" for="furnName">Tu nombre</label>
+              <input class="inp" id="furnName" autocomplete="name">
+            </div>
+            <div class="field">
+              <label class="lbl" for="furnZone">Zona</label>
+              <input class="inp" id="furnZone" autocomplete="address-level2" placeholder="Ej.: Villa Devoto">
+            </div>
+          </div>
+          <p class="hint">Si tenés una foto del espacio o una referencia, mandala en el chat cuando se abra.</p>
+          <button class="btn btn-primary" type="submit">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+            Enviar consulta por WhatsApp</button>
+        </form>
+        <figure class="furn-img">
+          <img src="img/mdc-taller.jpg" alt="Interior del taller con bancos de trabajo, maderas y máquinas" loading="lazy">
+          <figcaption>Nuestro taller, en Villa Devoto</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · DESARROLLO: evidencia -->
+  <section class="sec" id="trabajos" aria-labelledby="h-trab">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Trabajos del taller</span>
+        <h2 id="h-trab">Lo que ya salió de nuestras manos.</h2>
+        <p>Muebles para la casa, piezas para la mesa y presentación gastronómica. Todo hecho a pedido.</p>
+      </div>
+      <div class="gallery">
+        <figure class="wide"><img src="img/mdc-set.jpg" alt="Planchas de fundición, canastas y cazuelas sobre bases de madera, vistos desde arriba" loading="lazy"><figcaption>Línea de servicio para gastronomía</figcaption></figure>
+        <figure><img src="img/mdc-canasta.jpg" alt="Tabla de madera con canasta de metal para papas fritas" loading="lazy"><figcaption>Tabla con canasta</figcaption></figure>
+        <figure><img src="img/mdc-plancha-manijas.jpg" alt="Plancha lisa de aluminio sobre base de madera con manijas caladas" loading="lazy"><figcaption>Plancha con manijas</figcaption></figure>
+        <figure><img src="img/p05.jpg" alt="Juego de cama con respaldo iluminado y mesas de luz" loading="lazy"><figcaption>Respaldo y mesas de luz</figcaption></figure>
+        <figure><img src="img/mdc-cazuelas.jpg" alt="Base de madera con dos cazuelas de metal" loading="lazy"><figcaption>Base para cazuelas</figcaption></figure>
+        <figure class="wide"><img src="img/mdc-parrillera.jpg" alt="Plancha parrillera de fundición sobre base de madera" loading="lazy" style="object-position:center 60%"><figcaption>Plancha parrillera</figcaption></figure>
+        <figure><img src="img/mdc-plancha-lisa.jpg" alt="Tabla con plancha y hueco para cazuela" loading="lazy"><figcaption>Tabla con plancha</figcaption></figure>
+        <figure><img src="img/p04.jpg" alt="Perchero de madera con estante y abrigos colgados" loading="lazy"><figcaption>Perchero con estante</figcaption></figure>
+        <figure><img src="img/mdc-plancha-detalle.jpg" alt="Detalle de plancha con bordes sobre madera" loading="lazy"><figcaption>Terminación a mano</figcaption></figure>
+        <figure><img src="img/mdc-apiladas.jpg" alt="Tablas de madera maciza apiladas" loading="lazy"><figcaption>Madera maciza</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · DESARROLLO: características → beneficios -->
+  <section class="sec band" aria-labelledby="h-ben">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Por qué nosotros</span>
+        <h2 id="h-ben">Puede haber mil muebles iguales. Ninguno va a tener tu nombre.</h2>
+      </div>
+      <div class="ben-wrap">
+      <figure class="ben-img"><img src="img/mdc-grabado.jpg" alt="Tabla de madera con el nombre Gustavo grabado a láser" loading="lazy"><figcaption>Grabado láser: “Gustavo”</figcaption></figure>
+      <div class="benefits">
+        <div class="benefit"><span class="k">A medida</span><h3>Entra justo donde lo necesitás</h3><p>Los muebles los hacemos al centímetro que nos pases. Nada de “más o menos” ni de adaptar el espacio al mueble.</p></div>
+        <div class="benefit"><span class="k">Grabado láser</span><h3>Tu marca, en la madera</h3><p>Logo, nombre o una fecha. Te mandamos el diseño previo antes de grabar, así ves cómo queda.</p></div>
+        <div class="benefit"><span class="k">Madera maciza</span><h3>Hecho para el uso diario</h3><p>Eucalipto alistonado y listón corrido, estacionado y secado a horno. Aguanta el lavado, el calor y los años.</p></div>
+        <div class="benefit"><span class="k">Trato directo</span><h3>Hablás con quien lo fabrica</h3><p>Sin intermediarios ni números de ticket. Si mañana necesitás repetir el pedido, lo hacemos igual.</p></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · DESARROLLO: objeciones -->
+  <section class="sec" id="preguntas" aria-labelledby="h-faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 id="h-faq">Lo que todos nos preguntan antes de encargar.</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>¿Cómo sé cómo va a quedar el grabado?</summary><p>Mandanos tu logo o el texto y en 24 horas te enviamos el diseño aplicado sobre la pieza. No grabamos nada hasta que lo apruebes.</p></details>
+        <details><summary>¿Cuánto tarda mi pedido?</summary><p>Depende del mueble y la cantidad: una tabla sale en el día y un pedido de 50 tablas en unos 3 días; un estante, 2 días; una mesa de luz, dos semanas; una mesa o un ropero, alrededor de un mes. El plazo corre desde que se paga la seña, y el cotizador te muestra la estimación de cada mueble.</p></details>
+        <details><summary>¿Por qué los muebles no tienen precio online?</summary><p>Porque cada mueble cambia mucho según el espacio, la madera, los herrajes y la colocación. Preferimos entender bien lo que necesitás y pasarte un presupuesto exacto por WhatsApp, en lugar de mostrarte un número que después cambie.</p></details>
+        <details><summary>¿El precio del cotizador es el final?</summary><p>Son los precios de lista del catálogo, sin envío. Desde 25 unidades tenés precio mayorista, que te confirmamos por WhatsApp. El grabado láser cuesta $10.000 por unidad hasta 10 × 10 cm y $15.500 hasta 30 × 30 cm; para tamaños más grandes o grandes cantidades, consultanos.</p></details>
+        <details><summary>¿Cómo se paga?</summary><p>Con una seña del 50% para empezar a fabricar y el 50% restante contra entrega. Confirmar el pedido en la web no tiene costo: la seña se pide recién cuando aprobaste medidas y diseño. El presupuesto formal vale por 15 días.</p></details>
+        <details><summary>¿Hacen pedidos grandes para restaurantes o empresas?</summary><p>Sí. Trabajamos pedidos de hasta 50 unidades con el mismo diseño, y guardamos el modelo para que puedas reponer más adelante idéntico.</p></details>
+        <details><summary>¿Las tablas son aptas para alimentos?</summary><p>Sí. Las piezas que van en contacto con comida se terminan solo con aceite apto alimentario, sin lacas ni tintes.</p></details>
+        <details><summary>¿Hacen envíos?</summary><p>Sí. Los muebles incluyen el envío, y el vanitory también la colocación. Las tablas y piezas chicas se envían con costo aparte según la zona. El taller está en Villa Devoto, CABA.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · CIERRE / ÚLTIMA OPORTUNIDAD -->
+  <section class="sec close" aria-labelledby="h-close">
+    <div class="wrap">
+      <div>
+        <h2 id="h-close">Tus tablas, con tu nombre, con el precio claro desde el primer minuto.</h2>
+        <p>Confirmar no te compromete a pagar: primero validamos medidas y diseño con vos, y recién ahí se seña el 50%. Trabajamos con una cantidad limitada de pedidos por mes para cumplir cada fecha que damos.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#cotizador">Armar mi tabla</a>
+        <a class="btn btn-ghost" href="#muebles">Cotizar un mueble</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEDIDOS (vista del taller) -->
+  <section class="sec" id="pedidos" hidden aria-labelledby="h-ped">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Solo para el taller</span>
+        <h2 id="h-ped">Pedidos recibidos</h2>
+        <p id="ordersNote"></p>
+      </div>
+      <div class="orders" id="orders"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Maderas de Castelli · Marcos Sastre 4922, Villa Devoto, CABA · <a href="tel:+541149373586">11 4937-3586</a> · <a href="mailto:maderasdecastelli@gmail.com">maderasdecastelli@gmail.com</a></span>
+    <span style="display:flex;gap:20px;flex-wrap:wrap">
+      <a href="https://www.instagram.com/maderasdecastelli/" target="_blank" rel="noopener">Instagram</a>
+      <a class="js-wa" href="#" data-msg="Hola! Quiero consultar por un mueble a medida.">WhatsApp</a>
+      
+    </span>
+  </div>
+</footer>
+
+<a class="wa-float js-wa" href="#" data-msg="Hola! Quiero consultar por un mueble a medida." aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<!-- Confirmación de pedido -->
+<dialog id="dlg">
+  <form class="dlg" id="orderForm" method="dialog" novalidate>
+    <div>
+      <span class="eyebrow">Confirmar pedido</span>
+      <h3 style="margin-top:8px">¿A quién le escribimos?</h3>
+      <p class="hint" style="margin-top:6px">Con estos datos te contactamos para validar medidas y diseño. No se cobra nada ahora.</p>
+    </div>
+    <div class="row2">
+      <label for="fName">Nombre y apellido<input class="inp" id="fName" name="nombre" required autocomplete="name"></label>
+      <label for="fPhone">WhatsApp<input class="inp" id="fPhone" name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="11 5555 5555"></label>
+    </div>
+    <div class="row2">
+      <label for="fEmail">Email <span>(opcional)</span><input class="inp" id="fEmail" name="email" type="email" autocomplete="email"></label>
+      <label for="fZone">Localidad<input class="inp" id="fZone" name="localidad" autocomplete="address-level2" placeholder="Ej.: San Isidro"></label>
+    </div>
+    <label for="fBiz">Local o empresa <span>(opcional)</span><input class="inp" id="fBiz" name="empresa" autocomplete="organization"></label>
+    <div class="total" style="padding-top:6px;border-top:1px solid var(--line)"><span>Total estimado</span><span class="mono" id="dlgTotal"></span></div>
+    <p class="hint">Se seña con el 50% (<span class="mono" id="dlgDeposit"></span>) una vez que validamos medidas y diseño; el 50% restante se abona contra entrega.</p>
+    <p class="err" id="formErr" hidden></p>
+    <div class="actions">
+      <button class="btn btn-ghost" type="button" id="cancelBtn">Volver</button>
+      <button class="btn btn-primary" type="submit" id="sendBtn">Confirmar pedido</button>
+    </div>
+  </form>
+  <div class="dlg" id="doneView" hidden>
+    <div class="ok-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <div>
+      <h3>Pedido registrado</h3>
+      <p class="hint" style="margin-top:6px">Guardamos tu pedido con este número. Te escribimos dentro de las próximas 24 horas hábiles para validar medidas y pasarte el presupuesto formal (válido por 15 días).</p>
+    </div>
+    <div class="code" id="doneCode"></div>
+    <p class="hint" id="doneWhere"></p>
+    <div class="actions">
+      <button class="btn btn-ghost" type="button" id="doneClose">Cerrar</button>
+      <a class="btn btn-primary" id="doneWa" href="#" target="_blank" rel="noopener">Avisar por WhatsApp</a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ============ Configuración del negocio ============ */
+const CONFIG = {
+  whatsapp: "5491132911325", // WhatsApp Business (formato internacional, sin "+")
+  instagram: "https://www.instagram.com/maderasdecastelli/",
+};
+
+/* Catálogo MDC 09/2026 (precios de lista, minorista). */
+const CATALOG = [
+  {id:"vacio", name:"Tabla “Vacío”", desc:"Tabla de corte y servicio.", img:"cat-vacio", variants:[
+    {name:"A", dims:"20 × 30 × 3 cm", price:29000}, {name:"B", dims:"30 × 40 × 3 cm", price:38000},
+    {name:"C", dims:"30 × 50 × 3 cm", price:50000}, {name:"D", dims:"40 × 60 × 3 cm", price:72000},
+    {name:"E", dims:"40 × 75 × 3 cm", price:93000}]},
+  {id:"entrana", name:"Tabla “Entraña”", desc:"Con tope para que se detenga en la mesada.", img:"cat-entrana", variants:[
+    {name:"Única", dims:"30 × 50 × 3 cm", price:62000}]},
+  {id:"solomillo", name:"Tabla “Solomillo”", desc:"Tabla con mango para servir.", img:"cat-solomillo", variants:[
+    {name:"A", dims:"15 × 40 × 2 cm", price:30000}, {name:"B", dims:"25 × 50 × 2 cm", price:45000},
+    {name:"C", dims:"15 × 75 × 2 cm", price:45000}]},
+  {id:"platos", name:"Platos", desc:"Platos de madera.", img:"cat-plato-redondo", variants:[
+    {name:"Redondo", dims:"23 cm Ø × 2 cm", price:23000, img:"cat-plato-redondo"},
+    {name:"Rectangular", dims:"20 × 30 × 2 cm", price:19000, img:"cat-plato-rect"}]},
+  {id:"pizzera", name:"Pizzera con manijas", desc:"Para servir la pizza entera.", img:"cat-pizzera", variants:[
+    {name:"Única", dims:"37 cm Ø × 3 cm", price:55000}]},
+  {id:"parrilla", name:"Parrilla de fundición", desc:"Plancha de fundición sobre base de madera, para servir el corte caliente.", img:"cat-parrilla-grande", variants:[
+    {name:"Chica", dims:"parrilla 22 × 13 cm", price:41000, img:"cat-parrilla-chica"},
+    {name:"Mediana", dims:"parrilla 32 × 13 cm", price:58000, img:"cat-parrilla-mediana"},
+    {name:"Grande", dims:"parrilla 34 × 19 cm", price:79000, img:"cat-parrilla-grande"},
+    {name:"Grande con 3 dips", dims:"parrilla 34 × 19 cm · dips 6,5 cm Ø", price:94000, img:"cat-parrilla-dips"}]},
+  {id:"dips", name:"Tabla con dips", desc:"Cazuelas de 6,5 cm de diámetro.", img:"cat-dips-3", variants:[
+    {name:"1 dip", dims:"dip 6,5 cm Ø", price:14000, img:"cat-dips-1"},
+    {name:"2 dips", dims:"dips 6,5 cm Ø", price:19300, img:"cat-dips-2"},
+    {name:"3 dips", dims:"dips 6,5 cm Ø", price:21600, img:"cat-dips-3"}]},
+  {id:"provoletera", name:"Provoletera", desc:"Para el provolone a la parrilla.", img:"cat-provoletera-grill", variants:[
+    {name:"Grill", dims:"con base de madera", price:37000, img:"cat-provoletera-grill"},
+    {name:"Con asas", dims:"de fundición", price:37000, img:"cat-provoletera-asas", noEngrave:true}]},
+  {id:"cubiertos", name:"Cubiertos Tramontina", desc:"Para acompañar las tablas.", img:"cat-cubiertos", noEngrave:true, variants:[
+    {name:"Dynamic", dims:"cuchillo y tenedor", price:10000}, {name:"Jumbo Dynamic", dims:"cuchillo y tenedor", price:16000}]},
+];
+const ENGRAVE = [
+  {id:"no",  name:"Sin grabado", price:0},
+  {id:"s",   name:"Hasta 10 × 10 cm", price:10000},
+  {id:"m",   name:"Hasta 30 × 30 cm", price:15500},
+];
+const WHOLESALE_FROM = 25;
+const PER_DAY = 20;   // tablas por día en el taller (50 tablas ≈ 3 días)
+
+/* ============ Estado ============ */
+const state = {prod:"vacio", variant:2, engrave:"no", qty:1, note:""};
+let cart = [];
+const $ = s => document.querySelector(s);
+const money = n => "$ " + Math.round(n).toLocaleString("es-AR");
+const round500 = n => Math.round(n/500)*500;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+try { const saved = JSON.parse(localStorage.getItem("mdc_cart")||"[]"); if (Array.isArray(saved)) cart = saved; } catch(e) {}
+const saveCart = () => { try { localStorage.setItem("mdc_cart", JSON.stringify(cart)); } catch(e) {} };
+
+/* ============ Render de controles ============ */
+function chip(name, value, label, checked, extra="") {
+  return `<label class="chip"><input type="radio" name="${name}" value="${value}" ${checked?"checked":""} ${extra}><span>${label}</span></label>`;
+}
+const prod = () => CATALOG.find(p => p.id === state.prod);
+const variant = () => prod().variants[state.variant];
+const canEngrave = () => !prod().noEngrave && !variant().noEngrave;
+
+function renderProds() {
+  $("#prods").innerHTML = CATALOG.map(p => {
+    const from = Math.min(...p.variants.map(v => v.price));
+    return `<label class="prod"><input type="radio" name="prod" value="${p.id}" ${p.id===state.prod?"checked":""}>
+      <div><img src="img/${p.img}.jpg" alt="" loading="lazy"><span><b>${p.name}</b><small>${p.variants.length>1?"desde ":""}${money(from)}</small></span></div></label>`;
+  }).join("");
+}
+function renderOptions() {
+  const p = prod();
+  if (state.variant >= p.variants.length) state.variant = 0;
+  $("#variantField").hidden = p.variants.length < 2;
+  $("#variants").innerHTML = p.variants.map((v,i) =>
+    chip("variant", i, `${v.name}<small>${v.dims}</small>`, i===state.variant)).join("");
+  renderEngrave();
+}
+function renderEngrave() {
+  if (!canEngrave()) state.engrave = "no";
+  $("#engraveField").hidden = !canEngrave();
+  $("#engrave").innerHTML = ENGRAVE.map(g =>
+    chip("engrave", g.id, g.name + (g.price?`<small>+${money(g.price)} c/u</small>`:""), g.id===state.engrave)).join("");
+}
+
+/* ============ Cálculo ============ */
+function compute() {
+  const v = variant(), g = ENGRAVE.find(x => x.id === state.engrave);
+  const unit = v.price + g.price;
+  const total = unit * state.qty;
+  const d0 = Math.max(1, Math.ceil(state.qty / PER_DAY));
+  return {base:v.price, eng:g, unit, total, days:[d0, d0+1], wholesale: state.qty >= WHOLESALE_FROM};
+}
+function describe() {
+  const v = variant(), g = ENGRAVE.find(x => x.id === state.engrave);
+  return [prod().variants.length>1 ? (v.name.length===1 ? `Medida ${v.name}` : v.name) : null, v.dims, g.price ? `Grabado ${g.name.toLowerCase()}` : null].filter(Boolean).join(" · ");
+}
+
+function update() {
+  const c = compute(), p = prod(), v = variant();
+  $("#price").textContent = money(c.total);
+  $("#unitPrice").textContent = state.qty > 1 ? `${state.qty} unidades · ${money(c.unit)} c/u` : "1 unidad";
+  let html = `<div><dt>${p.name}${p.variants.length>1?` ${v.name}`:""}</dt><dd>${money(c.base)}</dd></div>`;
+  if (c.eng.price) html += `<div><dt>Grabado láser ${c.eng.name.toLowerCase()}</dt><dd>+ ${money(c.eng.price)}</dd></div>`;
+  if (state.qty > 1) html += `<div><dt>× ${state.qty} unidades</dt><dd>${money(c.total)}</dd></div>`;
+  $("#lines").innerHTML = html;
+  $("#wholesale").hidden = !c.wholesale;
+  $("#eta").textContent = `${c.days[0]} a ${c.days[1]} días hábiles desde la seña (estimado)`;
+  $("#ship").textContent = "Envío a coordinar aparte";
+  $("#deposit").textContent = money(c.total/2);
+  $("#pvImg").src = `img/${v.img || p.img}.jpg`;
+  $("#pvImg").alt = `${p.name} ${v.name}`;
+  $("#pvName").textContent = p.name + (p.variants.length>1 ? ` · ${v.name}` : "");
+  $("#pvDims").textContent = v.dims;
+}
+
+/* ============ Eventos del cotizador ============ */
+$("#cfg").addEventListener("change", e => {
+  const el = e.target;
+  if (el.name === "prod") { state.prod = el.value; state.variant = 0; renderOptions(); }
+  else if (el.name === "variant") { state.variant = +el.value; renderEngrave(); }
+  else if (el.name === "engrave") state.engrave = el.value;
+  else if (el.id === "qty") setQty(el.value);
+  update();
+});
+$("#cfg").addEventListener("input", e => { if (e.target.id === "note") state.note = e.target.value; });
+function setQty(v) { v = Math.min(500, Math.max(1, parseInt(v) || 1)); state.qty = v; $("#qty").value = v; }
+$("#qtyMinus").onclick = () => { setQty(state.qty - 1); update(); };
+$("#qtyPlus").onclick  = () => { setQty(state.qty + 1); update(); };
+
+$("#addBtn").onclick = () => {
+  const c = compute(), p = prod(), v = variant();
+  cart.push({
+    tipo: p.name, tipoId: p.id, medida: v.name, detalle: describe(), grabado: c.eng.price ? c.eng.name : "",
+    cantidad: state.qty, nota: state.note.trim(), unitario: c.unit, subtotal: c.total,
+    mayorista: c.wholesale, plazo: c.days, envio: "Envío a coordinar aparte",
+  });
+  saveCart(); renderCart();
+  state.note = ""; $("#note").value = "";
+  const btn = $("#addBtn"); btn.textContent = "Agregado ✓";
+  setTimeout(() => btn.textContent = "Agregar al presupuesto", 1400);
+};
+
+function cartTotal() { return cart.reduce((a,i) => a + i.subtotal, 0); }
+function renderCart() {
+  const has = cart.length > 0;
+  $("#cartEmpty").hidden = has; $("#totalRow").hidden = !has; $("#cartActions").hidden = !has;
+  $("#cartCount").textContent = has ? `${cart.length} ${cart.length===1?"producto":"productos"}` : "";
+  $("#items").innerHTML = cart.map((i,n) => `<li>
+    <div><b>${esc(i.tipo)}${i.cantidad>1?` × ${i.cantidad}`:""}</b><small>${esc(i.detalle)}${i.nota?`<br>“${esc(i.nota)}”`:""}</small></div>
+    <span class="mono">${money(i.subtotal)}</span>
+    <button class="x" type="button" data-rm="${n}" aria-label="Quitar ${esc(i.tipo)}">×</button></li>`).join("");
+  $("#total").textContent = money(cartTotal());
+}
+$("#items").addEventListener("click", e => {
+  const n = e.target.dataset.rm; if (n === undefined) return;
+  cart.splice(+n, 1); saveCart(); renderCart();
+});
+
+/* ============ WhatsApp ============ */
+function waUrl(msg) {
+  return CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}` : CONFIG.instagram;
+}
+function quoteText(code) {
+  const lines = cart.map(i => `• ${i.tipo}${i.cantidad>1?` ×${i.cantidad}`:""}: ${i.detalle} — ${money(i.subtotal)}${i.nota?` (${i.nota})`:""}`);
+  return `Hola! ${code ? `Confirmé el pedido ${code}` : "Armé este presupuesto"} en la web:\n${lines.join("\n")}\nTotal estimado: ${money(cartTotal())} (seña 50%: ${money(cartTotal()/2)})`;
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest(".js-wa, .js-wa-quote"); if (!a) return;
+  e.preventDefault();
+  window.open(waUrl(a.classList.contains("js-wa-quote") ? quoteText() : a.dataset.msg), "_blank", "noopener");
+});
+
+/* ============ Guardado de pedidos ============ */
+// En la versión publicada se guarda en la base de datos del sitio; como respaldo, en este navegador.
+let db = null, uid = null, canSeeOrders = false;
+(async () => {
+  if (!window.claude?.use) return;
+  try {
+    const [d, u] = await Promise.all([claude.use("db"), claude.use("user")]);
+    if (u) { uid = await u.id(); canSeeOrders = await u.canEdit(); }
+    if (d && uid) db = d;
+  } catch (e) {}
+})();
+
+function readLocal() { try { return JSON.parse(localStorage.getItem("mdc_pedidos") || "[]"); } catch(e) { return []; } }
+function writeLocal(list) { try { localStorage.setItem("mdc_pedidos", JSON.stringify(list)); return true; } catch(e) { return false; } }
+
+async function saveOrder(order) {
+  if (db && uid) {
+    const ref = db.doc("pedidos/" + uid);
+    const snap = await ref.get();
+    const prev = snap.exists ? (snap.data().ordenes || []) : [];
+    await ref.set({ordenes: [...prev, order], actualizado: order.fecha});
+    return "db";
+  }
+  const list = readLocal(); list.push(order);
+  if (!writeLocal(list)) throw new Error("storage");
+  return "local";
+}
+
+function newCode() {
+  const d = new Date(), p = n => String(n).padStart(2,"0");
+  return `MDC-${String(d.getFullYear()).slice(2)}${p(d.getMonth()+1)}${p(d.getDate())}-${Math.random().toString(36).slice(2,6).toUpperCase()}`;
+}
+
+const dlg = $("#dlg");
+$("#confirmBtn").onclick = () => {
+  $("#orderForm").hidden = false; $("#doneView").hidden = true; $("#formErr").hidden = true;
+  $("#dlgTotal").textContent = money(cartTotal());
+  $("#dlgDeposit").textContent = money(cartTotal()/2);
+  dlg.showModal(); $("#fName").focus();
+};
+$("#cancelBtn").onclick = () => dlg.close();
+$("#doneClose").onclick = () => dlg.close();
+
+$("#orderForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target, err = $("#formErr");
+  const nombre = f.nombre.value.trim(), whatsapp = f.whatsapp.value.trim();
+  if (!nombre || whatsapp.replace(/\D/g,"").length < 8) {
+    err.textContent = "Completá tu nombre y un WhatsApp con código de área para que podamos contactarte.";
+    err.hidden = false; return;
+  }
+  const btn = $("#sendBtn"); btn.disabled = true; btn.textContent = "Guardando…";
+  const order = {
+    codigo: newCode(), fecha: new Date().toISOString(), estado: "Nuevo",
+    cliente: {nombre, whatsapp, email: f.email.value.trim(), localidad: f.localidad.value.trim(), empresa: f.empresa.value.trim()},
+    items: cart, total: cartTotal(),
+  };
+  try {
+    const where = await saveOrder(order);
+    $("#doneCode").textContent = order.codigo;
+    $("#doneWhere").textContent = where === "db" ? "" : "Guardado en este dispositivo. Avisanos por WhatsApp para que lo recibamos.";
+    $("#doneWa").href = waUrl(quoteText(order.codigo));
+    $("#orderForm").hidden = true; $("#doneView").hidden = false;
+    cart = []; saveCart(); renderCart(); f.reset();
+    if (!$("#pedidos").hidden) renderOrders();
+  } catch (ex) {
+    err.textContent = "No pudimos guardar el pedido. Probá de nuevo o mandanos el presupuesto por WhatsApp.";
+    err.hidden = false;
+  } finally { btn.disabled = false; btn.textContent = "Confirmar pedido"; }
+});
+
+/* ============ Vista del taller ============ */
+async function loadOrders() {
+  if (db && canSeeOrders) {
+    const snap = await db.collection("pedidos").get();
+    return {src:"db", list: snap.docs.flatMap(d => (d.data().ordenes || []).map((o,i) => ({...o, _doc:d.id, _i:i})))};
+  }
+  return {src:"local", list: readLocal().map((o,i) => ({...o, _i:i}))};
+}
+const STATES = ["Nuevo","Contactado","Seña recibida","En producción","Entregado","Cancelado"];
+async function renderOrders() {
+  const box = $("#orders");
+  box.innerHTML = `<p class="hint">Cargando…</p>`;
+  let res;
+  try { res = await loadOrders(); } catch (e) { box.innerHTML = `<p class="hint">No se pudieron leer los pedidos. Recargá la página.</p>`; return; }
+  const list = res.list.sort((a,b) => b.fecha.localeCompare(a.fecha));
+  $("#ordersNote").textContent = res.src === "db"
+    ? `${list.length} pedido(s) guardados en la base del sitio.`
+    : `${list.length} pedido(s) guardados en este navegador. En la versión publicada, los pedidos de todos los clientes aparecen acá.`;
+  if (!list.length) { box.innerHTML = `<p class="hint">Todavía no hay pedidos confirmados.</p>`; return; }
+  box.innerHTML = list.map((o,n) => `<article class="order">
+    <div class="order-top">
+      <span><b class="mono">${esc(o.codigo)}</b> · ${new Date(o.fecha).toLocaleString("es-AR",{dateStyle:"medium",timeStyle:"short"})}</span>
+      <span class="pill">${esc(o.estado)}</span>
+    </div>
+    <div><b>${esc(o.cliente.nombre)}</b>${o.cliente.empresa?` · ${esc(o.cliente.empresa)}`:""} · <span class="mono">${esc(o.cliente.whatsapp)}</span>${o.cliente.localidad?` · ${esc(o.cliente.localidad)}`:""}${o.cliente.email?` · ${esc(o.cliente.email)}`:""}</div>
+    <ul>${o.items.map(i => `<li>${esc(i.tipo)}${i.cantidad>1?` ×${i.cantidad}`:""}: ${esc(i.detalle)} — ${money(i.subtotal)}${i.nota?` · “${esc(i.nota)}”`:""}</li>`).join("")}</ul>
+    <div class="order-top"><b>Total ${money(o.total)}</b>
+      <label class="hint">Estado <select data-n="${n}">${STATES.map(s => `<option ${s===o.estado?"selected":""}>${s}</option>`).join("")}</select></label></div>
+  </article>`).join("");
+  box.querySelectorAll("select").forEach(sel => sel.onchange = async () => {
+    const o = list[+sel.dataset.n]; sel.disabled = true;
+    try {
+      if (res.src === "db") {
+        const ref = db.doc("pedidos/" + o._doc), snap = await ref.get();
+        const ords = [...(snap.data().ordenes || [])].map(x => ({...x}));
+        const k = ords.findIndex(x => x.codigo === o.codigo);
+        if (k >= 0) { ords[k].estado = sel.value; await ref.update({ordenes: ords}); }
+      } else {
+        const l = readLocal(); const k = l.findIndex(x => x.codigo === o.codigo);
+        if (k >= 0) { l[k].estado = sel.value; writeLocal(l); }
+      }
+      o.estado = sel.value; sel.closest(".order").querySelector(".pill").textContent = sel.value;
+    } catch (e) { sel.value = o.estado; }
+    sel.disabled = false;
+  });
+}
+if ($("#ordersLink")) $("#ordersLink").onclick = () => {
+  const sec = $("#pedidos"); sec.hidden = !sec.hidden;
+  if (!sec.hidden) { renderOrders(); sec.scrollIntoView(); }
+};
+
+/* ============ Muebles: consulta por WhatsApp ============ */
+const FURN = ["Ropero / placard","Vanitory","Mesa","Mesa de luz","Estante / repisa","Respaldo de cama","Perchero","Otro"];
+$("#furnTypes").innerHTML = FURN.map((f,i) => chip("furn", f, f, i===0)).join("");
+$("#furnForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim();
+  const tipo = (document.querySelector('input[name="furn"]:checked') || {}).value || "mueble";
+  const msg = [`Hola! ${v("#furnName") ? `Soy ${v("#furnName")}. ` : ""}Quiero cotizar un mueble a medida:`,
+    `• Mueble: ${tipo}`,
+    v("#furnSize") && `• Medidas: ${v("#furnSize")}`,
+    v("#furnIdea") && `• Idea: ${v("#furnIdea")}`,
+    v("#furnZone") && `• Zona: ${v("#furnZone")}`].filter(Boolean).join("\n");
+  window.open(waUrl(msg), "_blank", "noopener");
+});
+
+/* ============ Inicio ============ */
+renderProds(); renderOptions(); update(); renderCart();
+</script>
+</body>
+</html>
