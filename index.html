@@ -633,7 +633,7 @@ dialog::backdrop{background:rgba(10,12,10,.5)}
     <div>
       <span class="eyebrow">Confirmar pedido</span>
       <h3 style="margin-top:8px">¿A quién le escribimos?</h3>
-      <p class="hint" style="margin-top:6px">Con estos datos te contactamos para validar medidas y diseño. No se cobra nada ahora.</p>
+      <p class="hint" style="margin-top:6px">Al confirmar se abre WhatsApp con tu pedido listo: solo tocá Enviar. No se cobra nada ahora.</p>
     </div>
     <div class="row2">
       <label for="fName">Nombre y apellido<input class="inp" id="fName" name="nombre" required autocomplete="name"></label>
@@ -649,20 +649,20 @@ dialog::backdrop{background:rgba(10,12,10,.5)}
     <p class="err" id="formErr" hidden></p>
     <div class="actions">
       <button class="btn btn-ghost" type="button" id="cancelBtn">Volver</button>
-      <button class="btn btn-primary" type="submit" id="sendBtn">Confirmar pedido</button>
+      <button class="btn btn-primary" type="submit" id="sendBtn">Confirmar y enviar por WhatsApp</button>
     </div>
   </form>
   <div class="dlg" id="doneView" hidden>
     <div class="ok-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
     <div>
-      <h3>Pedido registrado</h3>
-      <p class="hint" style="margin-top:6px">Guardamos tu pedido con este número. Te escribimos dentro de las próximas 24 horas hábiles para validar medidas y pasarte el presupuesto formal (válido por 15 días).</p>
+      <h3>¡Último paso: tocá Enviar en WhatsApp!</h3>
+      <p class="hint" style="margin-top:6px">Se abrió WhatsApp con tu pedido. Cuando lo envíes, te respondemos dentro de las 24 horas hábiles para validar medidas y pasarte el presupuesto formal (válido por 15 días).</p>
     </div>
     <div class="code" id="doneCode"></div>
-    <p class="hint" id="doneWhere"></p>
+    <p class="hint">¿No se abrió WhatsApp? Tocá el botón de abajo.</p>
     <div class="actions">
       <button class="btn btn-ghost" type="button" id="doneClose">Cerrar</button>
-      <a class="btn btn-primary" id="doneWa" href="#" target="_blank" rel="noopener">Avisar por WhatsApp</a>
+      <a class="btn btn-primary" id="doneWa" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
     </div>
   </div>
 </dialog>
@@ -672,6 +672,9 @@ dialog::backdrop{background:rgba(10,12,10,.5)}
 const CONFIG = {
   whatsapp: "5491132911325", // WhatsApp Business (formato internacional, sin "+")
   instagram: "https://www.instagram.com/maderasdecastelli/",
+  // URL de la app web de Google Apps Script que anota cada pedido en una planilla (ver integracion/pedidos-sheets.gs).
+  // Vacío = no se anota en Sheets.
+  sheetsUrl: "",
 };
 
 /* Catálogo MDC 09/2026 (precios de lista, minorista). */
@@ -832,9 +835,10 @@ $("#items").addEventListener("click", e => {
 function waUrl(msg) {
   return CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}` : CONFIG.instagram;
 }
-function quoteText(code) {
+function quoteText(code, cliente) {
   const lines = cart.map(i => `• ${i.tipo}${i.cantidad>1?` ×${i.cantidad}`:""}: ${i.detalle} — ${money(i.subtotal)}${i.nota?` (${i.nota})`:""}`);
-  return `Hola! ${code ? `Confirmé el pedido ${code}` : "Armé este presupuesto"} en la web:\n${lines.join("\n")}\nTotal estimado: ${money(cartTotal())} (seña 50%: ${money(cartTotal()/2)})`;
+  return `Hola! ${code ? `Confirmé el pedido ${code}` : "Armé este presupuesto"} en la web:\n${lines.join("\n")}\nTotal estimado: ${money(cartTotal())} (seña 50%: ${money(cartTotal()/2)})` +
+    (cliente ? `\n\nMis datos: ${cliente.nombre}${cliente.empresa?` (${cliente.empresa})`:""} · ${cliente.whatsapp}${cliente.localidad?` · ${cliente.localidad}`:""}${cliente.email?` · ${cliente.email}`:""}` : "");
 }
 document.addEventListener("click", e => {
   const a = e.target.closest(".js-wa, .js-wa-quote"); if (!a) return;
@@ -870,6 +874,14 @@ async function saveOrder(order) {
   return "local";
 }
 
+function sendToSheets(order) {
+  if (!CONFIG.sheetsUrl) return;
+  try {
+    // text/plain + no-cors: Apps Script lo recibe sin preflight; la respuesta no se lee.
+    fetch(CONFIG.sheetsUrl, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(order)}).catch(() => {});
+  } catch (e) {}
+}
+
 function newCode() {
   const d = new Date(), p = n => String(n).padStart(2,"0");
   return `MDC-${String(d.getFullYear()).slice(2)}${p(d.getMonth()+1)}${p(d.getDate())}-${Math.random().toString(36).slice(2,6).toUpperCase()}`;
@@ -893,24 +905,21 @@ $("#orderForm").addEventListener("submit", async e => {
     err.textContent = "Completá tu nombre y un WhatsApp con código de área para que podamos contactarte.";
     err.hidden = false; return;
   }
-  const btn = $("#sendBtn"); btn.disabled = true; btn.textContent = "Guardando…";
   const order = {
     codigo: newCode(), fecha: new Date().toISOString(), estado: "Nuevo",
     cliente: {nombre, whatsapp, email: f.email.value.trim(), localidad: f.localidad.value.trim(), empresa: f.empresa.value.trim()},
     items: cart, total: cartTotal(),
   };
-  try {
-    const where = await saveOrder(order);
-    $("#doneCode").textContent = order.codigo;
-    $("#doneWhere").textContent = where === "db" ? "" : "Guardado en este dispositivo. Avisanos por WhatsApp para que lo recibamos.";
-    $("#doneWa").href = waUrl(quoteText(order.codigo));
-    $("#orderForm").hidden = true; $("#doneView").hidden = false;
-    cart = []; saveCart(); renderCart(); f.reset();
-    if (!$("#pedidos").hidden) renderOrders();
-  } catch (ex) {
-    err.textContent = "No pudimos guardar el pedido. Probá de nuevo o mandanos el presupuesto por WhatsApp.";
-    err.hidden = false;
-  } finally { btn.disabled = false; btn.textContent = "Confirmar pedido"; }
+  // WhatsApp se abre dentro del mismo clic (si esperáramos al guardado, el navegador lo bloquearía como pop-up).
+  const wa = waUrl(quoteText(order.codigo, order.cliente));
+  window.open(wa, "_blank", "noopener");
+  sendToSheets(order);
+  $("#doneCode").textContent = order.codigo;
+  $("#doneWa").href = wa;
+  $("#orderForm").hidden = true; $("#doneView").hidden = false;
+  cart = []; saveCart(); renderCart(); f.reset();
+  try { await saveOrder(order); } catch (ex) {}
+  if (!$("#pedidos").hidden) renderOrders();
 });
 
 /* ============ Vista del taller ============ */
